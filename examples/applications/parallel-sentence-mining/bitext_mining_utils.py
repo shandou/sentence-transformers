@@ -30,9 +30,11 @@ def kNN(x, y, k, use_ann_search=False, ann_num_clusters=32768, ann_num_cluster_p
     start_time = time.time()
     if use_ann_search:
         print("Perform approx. kNN search")
-        n_cluster = min(ann_num_clusters, int(y.shape[0]/1000))
+        n_cluster = min(ann_num_clusters, int(y.shape[0] / 1000))
         quantizer = faiss.IndexFlatIP(y.shape[1])
-        index = faiss.IndexIVFFlat(quantizer, y.shape[1], n_cluster, faiss.METRIC_INNER_PRODUCT)
+        index = faiss.IndexIVFFlat(
+            quantizer, y.shape[1], n_cluster, faiss.METRIC_INNER_PRODUCT
+        )
         index.nprobe = ann_num_cluster_probe
         index.train(y)
         index.add(y)
@@ -43,15 +45,15 @@ def kNN(x, y, k, use_ann_search=False, ann_num_clusters=32768, ann_num_cluster_p
         idx.add(y)
         sim, ind = idx.search(x, k)
 
-    print("Done: {:.2f} sec".format(time.time()-start_time))
+    print("Done: {:.2f} sec".format(time.time() - start_time))
     return sim, ind
 
 
 def file_open(filepath):
-    #Function to allowing opening files based on file extension
-    if filepath.endswith('.gz'):
-        return gzip.open(filepath, 'rt', encoding='utf8')
-    elif filepath.endswith('xz'):
-        return lzma.open(filepath, 'rt', encoding='utf8')
+    # Function to allowing opening files based on file extension
+    if filepath.endswith(".gz"):
+        return gzip.open(filepath, "rt", encoding="utf8")
+    elif filepath.endswith("xz"):
+        return lzma.open(filepath, "rt", encoding="utf8")
     else:
-        return open(filepath, 'r', encoding='utf8')
+        return open(filepath, "r", encoding="utf8")
