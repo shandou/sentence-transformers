@@ -233,6 +233,8 @@ with gzip.open(hard_negatives_filepath, "rt") as fIn:
                 "neg": neg_pids,
             }
 
+del ce_scores
+
 logging.info("Train queries: {}".format(len(train_queries)))
 
 
