@@ -4,18 +4,20 @@ for example with max-pooling (which gives a system like InferSent) or with mean-
 
 Note, you can also pass BERT embeddings to the BiLSTM.
 """
-import torch
-from torch.utils.data import DataLoader
-import math
-from sentence_transformers import models, losses, util
-from sentence_transformers import LoggingHandler, SentenceTransformer
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers.readers import *
-import logging
-from datetime import datetime
-import os
 import csv
 import gzip
+import logging
+import math
+import os
+from datetime import datetime
+
+import torch
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer, losses,
+                                   models, util)
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers.readers import *
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

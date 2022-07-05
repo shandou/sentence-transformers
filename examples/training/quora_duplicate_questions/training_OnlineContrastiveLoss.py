@@ -9,16 +9,18 @@ As loss function, we use OnlineConstrativeLoss. It reduces the distance between 
 An issue with constrative loss is, that it might push sentences away that are already well positioned in vector space.
 """
 
-from torch.utils.data import DataLoader
-from sentence_transformers import losses, util
-from sentence_transformers import LoggingHandler, SentenceTransformer, evaluation
-from sentence_transformers.readers import InputExample
-import logging
-from datetime import datetime
 import csv
+import logging
 import os
-from zipfile import ZipFile
 import random
+from datetime import datetime
+from zipfile import ZipFile
+
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer,
+                                   evaluation, losses, util)
+from sentence_transformers.readers import InputExample
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

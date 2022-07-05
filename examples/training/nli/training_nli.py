@@ -9,22 +9,19 @@ python training_nli.py
 OR
 python training_nli.py pretrained_transformer_model_name
 """
-from torch.utils.data import DataLoader
-import math
-from sentence_transformers import models, losses
-from sentence_transformers import (
-    LoggingHandler,
-    SentenceTransformer,
-    util,
-    InputExample,
-)
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-import logging
-from datetime import datetime
-import sys
-import os
-import gzip
 import csv
+import gzip
+import logging
+import math
+import os
+import sys
+from datetime import datetime
+
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (InputExample, LoggingHandler,
+                                   SentenceTransformer, losses, models, util)
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

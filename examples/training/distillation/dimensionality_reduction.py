@@ -14,22 +14,19 @@ and extend our original SentenceTransformer model with this linear downproject. 
 the new SentenceTransformer model will produce directly embeddings with 128 dimensions
 without further changes needed.
 """
-from sklearn.decomposition import PCA
-from sentence_transformers import (
-    SentenceTransformer,
-    LoggingHandler,
-    util,
-    evaluation,
-    models,
-    InputExample,
-)
+import csv
+import gzip
 import logging
 import os
-import gzip
-import csv
 import random
+
 import numpy as np
 import torch
+from sklearn.decomposition import PCA
+
+from sentence_transformers import (InputExample, LoggingHandler,
+                                   SentenceTransformer, evaluation, models,
+                                   util)
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

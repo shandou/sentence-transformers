@@ -7,14 +7,16 @@ Usage:
 python train_ct_from_file.py path/to/sentences.txt
 
 """
-import math
-from sentence_transformers import models, losses
-from sentence_transformers import LoggingHandler, SentenceTransformer
-import logging
-from datetime import datetime
 import gzip
+import logging
+import math
 import sys
+from datetime import datetime
+
 import tqdm
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer, losses,
+                                   models)
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

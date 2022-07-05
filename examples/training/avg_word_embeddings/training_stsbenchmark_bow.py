@@ -4,18 +4,21 @@ to a sparse vector with e.g. 25,000 dimensions. Optionally, you can also use tf-
 
 To make the model trainable, we add multiple dense layers to create a Deep Averaging Network (DAN).
 """
-from torch.utils.data import DataLoader
-import math
-from sentence_transformers import models, losses, util
-from sentence_transformers import LoggingHandler, SentenceTransformer
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers.readers import *
-from sentence_transformers.models.tokenizer.WordTokenizer import ENGLISH_STOP_WORDS
-import logging
-from datetime import datetime
-import os
 import csv
 import gzip
+import logging
+import math
+import os
+from datetime import datetime
+
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer, losses,
+                                   models, util)
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers.models.tokenizer.WordTokenizer import \
+    ENGLISH_STOP_WORDS
+from sentence_transformers.readers import *
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

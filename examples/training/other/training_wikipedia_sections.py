@@ -4,23 +4,17 @@ This script trains sentence transformers with a triplet loss function.
 As corpus, we use the wikipedia sections dataset that was describd by Dor et al., 2018, Learning Thematic Similarity Metric Using Triplet Networks.
 """
 
-from sentence_transformers import (
-    SentenceTransformer,
-    InputExample,
-    LoggingHandler,
-    losses,
-    models,
-    util,
-)
-from torch.utils.data import DataLoader
-from sentence_transformers.evaluation import TripletEvaluator
-from datetime import datetime
-from zipfile import ZipFile
-
 import csv
 import logging
 import os
+from datetime import datetime
+from zipfile import ZipFile
 
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (InputExample, LoggingHandler,
+                                   SentenceTransformer, losses, models, util)
+from sentence_transformers.evaluation import TripletEvaluator
 
 logging.basicConfig(
     format="%(asctime)s - %(message)s",

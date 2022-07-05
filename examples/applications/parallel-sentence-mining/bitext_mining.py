@@ -12,13 +12,15 @@ http://data.statmt.org/cc-100/
 This script requires that you have FAISS installed:
 https://github.com/facebookresearch/faiss
 """
-from sentence_transformers import SentenceTransformer, models
-import numpy as np
-from bitext_mining_utils import *
 import gzip
-import tqdm
-from sklearn.decomposition import PCA
+
+import numpy as np
 import torch
+import tqdm
+from bitext_mining_utils import *
+from sklearn.decomposition import PCA
+
+from sentence_transformers import SentenceTransformer, models
 
 # Model we want to use for bitext mining. LaBSE achieves state-of-the-art performance
 model_name = "LaBSE"

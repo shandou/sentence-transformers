@@ -3,17 +3,19 @@ This is an example how to train SentenceTransformers in a multi-task setup.
 
 The system trains BERT on the AllNLI and on the STSbenchmark dataset.
 """
-from torch.utils.data import DataLoader
+import csv
+import gzip
+import logging
 import math
-from sentence_transformers import models, losses
-from sentence_transformers import LoggingHandler, SentenceTransformer, util
+import os
+from datetime import datetime
+
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer, losses,
+                                   models, util)
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 from sentence_transformers.readers import *
-import logging
-from datetime import datetime
-import gzip
-import csv
-import os
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

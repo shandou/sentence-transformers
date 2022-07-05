@@ -8,21 +8,19 @@ Note: Quantized models are only available for CPUs. Use a GPU, if available, for
 For more details:
 https://pytorch.org/docs/stable/quantization.html
 """
+import csv
+import gzip
 import logging
 import os
+import time
+
 import torch
-from sentence_transformers import (
-    LoggingHandler,
-    SentenceTransformer,
-    util,
-    InputExample,
-)
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 from torch.nn import Embedding, Linear
 from torch.quantization import quantize_dynamic
-import gzip
-import csv
-import time
+
+from sentence_transformers import (InputExample, LoggingHandler,
+                                   SentenceTransformer, util)
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

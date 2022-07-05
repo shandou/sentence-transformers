@@ -19,24 +19,21 @@ weights in the student from scratch.
 There is a performance - speed trade-off. However, we found that a student with 4 instead of 12 layers keeps about 99.4%
 of the teacher performance, while being 2.3 times faster.
 """
-from torch.utils.data import DataLoader
-from sentence_transformers import models, losses, evaluation
-from sentence_transformers import (
-    LoggingHandler,
-    SentenceTransformer,
-    util,
-    InputExample,
-)
-from sentence_transformers.datasets import ParallelSentencesDataset
-import logging
-from datetime import datetime
-import os
-import gzip
 import csv
+import gzip
+import logging
+import os
 import random
-from sklearn.decomposition import PCA
-import torch
+from datetime import datetime
 
+import torch
+from sklearn.decomposition import PCA
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (InputExample, LoggingHandler,
+                                   SentenceTransformer, evaluation, losses,
+                                   models, util)
+from sentence_transformers.datasets import ParallelSentencesDataset
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

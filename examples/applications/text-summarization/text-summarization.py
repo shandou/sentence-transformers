@@ -16,10 +16,10 @@ New York City has been described as the cultural, financial, and media capital o
 If the New York metropolitan area were a sovereign state, it would have the eighth-largest economy in the world.
 """
 import nltk
-from sentence_transformers import SentenceTransformer, util
 import numpy as np
 from LexRank import degree_centrality_scores
 
+from sentence_transformers import SentenceTransformer, util
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 

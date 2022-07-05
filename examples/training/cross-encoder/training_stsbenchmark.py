@@ -7,18 +7,20 @@ It does NOT produce a sentence embedding and does NOT work for individual senten
 Usage:
 python training_stsbenchmark.py
 """
-from torch.utils.data import DataLoader
-import math
-from sentence_transformers import LoggingHandler, util
-from sentence_transformers.cross_encoder import CrossEncoder
-from sentence_transformers.cross_encoder.evaluation import CECorrelationEvaluator
-from sentence_transformers import InputExample
-import logging
-from datetime import datetime
-import sys
-import os
-import gzip
 import csv
+import gzip
+import logging
+import math
+import os
+import sys
+from datetime import datetime
+
+from torch.utils.data import DataLoader
+
+from sentence_transformers import InputExample, LoggingHandler, util
+from sentence_transformers.cross_encoder import CrossEncoder
+from sentence_transformers.cross_encoder.evaluation import \
+    CECorrelationEvaluator
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

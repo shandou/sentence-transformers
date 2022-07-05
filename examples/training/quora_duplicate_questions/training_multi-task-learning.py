@@ -11,16 +11,18 @@ Multi task learning is achieved quite easily by calling the model.fit method lik
 model.fit(train_objectives=[(train_dataloader_MultipleNegativesRankingLoss, train_loss_MultipleNegativesRankingLoss), (train_dataloader_constrative_loss, train_loss_constrative_loss)] ...)
 """
 
-from torch.utils.data import DataLoader
-from sentence_transformers import losses, util
-from sentence_transformers import LoggingHandler, SentenceTransformer, evaluation
-from sentence_transformers.readers import InputExample
-import logging
-from datetime import datetime
 import csv
+import logging
 import os
-from zipfile import ZipFile
 import random
+from datetime import datetime
+from zipfile import ZipFile
+
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer,
+                                   evaluation, losses, util)
+from sentence_transformers.readers import InputExample
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

@@ -5,21 +5,18 @@ It then fine-tunes this model for some epochs on the STS benchmark dataset.
 Note: In this example, you must specify a SentenceTransformer model.
 If you want to fine-tune a huggingface/transformers model like bert-base-uncased, see training_nli.py and training_stsbenchmark.py
 """
-from torch.utils.data import DataLoader
-import math
-from sentence_transformers import (
-    SentenceTransformer,
-    LoggingHandler,
-    losses,
-    util,
-    InputExample,
-)
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-import logging
-from datetime import datetime
-import os
-import gzip
 import csv
+import gzip
+import logging
+import math
+import os
+from datetime import datetime
+
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (InputExample, LoggingHandler,
+                                   SentenceTransformer, losses, util)
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

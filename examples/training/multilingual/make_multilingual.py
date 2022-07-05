@@ -18,26 +18,22 @@ Making Monolingual Sentence Embeddings Multilingual using Knowledge Distillation
 https://arxiv.org/abs/2004.09813
 """
 
-from sentence_transformers import (
-    SentenceTransformer,
-    LoggingHandler,
-    models,
-    evaluation,
-    losses,
-)
-from torch.utils.data import DataLoader
-from sentence_transformers.datasets import ParallelSentencesDataset
-from datetime import datetime
-
-import os
-import logging
-import sentence_transformers.util
 import csv
 import gzip
-from tqdm.autonotebook import tqdm
-import numpy as np
-import zipfile
 import io
+import logging
+import os
+import zipfile
+from datetime import datetime
+
+import numpy as np
+from torch.utils.data import DataLoader
+from tqdm.autonotebook import tqdm
+
+import sentence_transformers.util
+from sentence_transformers import (LoggingHandler, SentenceTransformer,
+                                   evaluation, losses, models)
+from sentence_transformers.datasets import ParallelSentencesDataset
 
 logging.basicConfig(
     format="%(asctime)s - %(message)s",

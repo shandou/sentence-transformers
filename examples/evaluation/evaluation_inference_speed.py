@@ -6,13 +6,15 @@ python evaluation_inference_speed.py
 OR
 python evaluation_inference_speed.py model_name
 """
-from sentence_transformers import SentenceTransformer, util
-import sys
-import os
-import time
-import torch
-import gzip
 import csv
+import gzip
+import os
+import sys
+import time
+
+import torch
+
+from sentence_transformers import SentenceTransformer, util
 
 # Limit torch to 4 threads
 torch.set_num_threads(4)

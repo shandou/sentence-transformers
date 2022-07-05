@@ -32,22 +32,18 @@ python make_multilingual_sys.py parallel-sentences/*-train.tsv.gz --dev parallel
 
 """
 
-from sentence_transformers import (
-    SentenceTransformer,
-    LoggingHandler,
-    models,
-    evaluation,
-    losses,
-)
-from torch.utils.data import DataLoader
-from sentence_transformers.datasets import ParallelSentencesDataset
+import gzip
+import logging
+import os
+import sys
 from datetime import datetime
 
-import os
-import logging
-import gzip
 import numpy as np
-import sys
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer,
+                                   evaluation, losses, models)
+from sentence_transformers.datasets import ParallelSentencesDataset
 
 logging.basicConfig(
     format="%(asctime)s - %(message)s",

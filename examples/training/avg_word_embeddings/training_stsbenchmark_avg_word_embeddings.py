@@ -6,18 +6,20 @@ If 'glove.6B.300d.txt.gz' does not exist, it tries to download it from our serve
 See https://public.ukp.informatik.tu-darmstadt.de/reimers/embeddings/
 for available word embeddings files
 """
-import torch
-from torch.utils.data import DataLoader
-import math
-from sentence_transformers import models, losses, util
-from sentence_transformers import LoggingHandler, SentenceTransformer
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers.readers import *
-import logging
-from datetime import datetime
-import os
 import csv
 import gzip
+import logging
+import math
+import os
+from datetime import datetime
+
+import torch
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer, losses,
+                                   models, util)
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers.readers import *
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

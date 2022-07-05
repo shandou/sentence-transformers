@@ -16,31 +16,26 @@ python train_sts_qqp_crossdomain.py
 OR
 python train_sts_qqp_crossdomain.py pretrained_transformer_model_name
 """
-from torch.utils.data import DataLoader
-from sentence_transformers import (
-    models,
-    losses,
-    util,
-    LoggingHandler,
-    SentenceTransformer,
-)
-from sentence_transformers.cross_encoder import CrossEncoder
-from sentence_transformers.cross_encoder.evaluation import CECorrelationEvaluator
-from sentence_transformers.evaluation import (
-    EmbeddingSimilarityEvaluator,
-    BinaryClassificationEvaluator,
-)
-from sentence_transformers.readers import InputExample
+import csv
+import gzip
+import logging
+import math
+import os
+import sys
 from datetime import datetime
 from zipfile import ZipFile
-import logging
-import csv
-import sys
-import torch
-import math
-import gzip
-import os
 
+import torch
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer, losses,
+                                   models, util)
+from sentence_transformers.cross_encoder import CrossEncoder
+from sentence_transformers.cross_encoder.evaluation import \
+    CECorrelationEvaluator
+from sentence_transformers.evaluation import (BinaryClassificationEvaluator,
+                                              EmbeddingSimilarityEvaluator)
+from sentence_transformers.readers import InputExample
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

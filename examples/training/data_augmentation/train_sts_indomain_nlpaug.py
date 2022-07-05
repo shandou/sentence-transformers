@@ -28,26 +28,23 @@ Citation: https://arxiv.org/abs/2010.08240
 Usage:
 python train_sts_indomain_nlpaug.py
 """
-from torch.utils.data import DataLoader
-import torch
-import math
-from sentence_transformers import (
-    SentenceTransformer,
-    LoggingHandler,
-    losses,
-    models,
-    util,
-)
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers.readers import STSBenchmarkDataReader, InputExample
-import nlpaug.augmenter.word as naw
-import logging
-from datetime import datetime
-import sys
-import os
-import gzip
 import csv
+import gzip
+import logging
+import math
+import os
+import sys
+from datetime import datetime
+
+import nlpaug.augmenter.word as naw
+import torch
 import tqdm
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer, losses,
+                                   models, util)
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers.readers import InputExample, STSBenchmarkDataReader
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

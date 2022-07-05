@@ -1,14 +1,14 @@
-from sentence_transformers import SentenceTransformer, util, models
-from PIL import ImageFile, Image
 import numpy as np
 import requests
+from PIL import Image, ImageFile
 
+from sentence_transformers import SentenceTransformer, models, util
 
 ###########
 
 image = Image.open("two_dogs_in_snow.jpg")
 
-from transformers import CLIPProcessor, CLIPModel
+from transformers import CLIPModel, CLIPProcessor
 
 model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")

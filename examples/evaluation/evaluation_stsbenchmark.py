@@ -6,19 +6,17 @@ python evaluation_stsbenchmark.py
 OR
 python evaluation_stsbenchmark.py model_name
 """
-from sentence_transformers import (
-    SentenceTransformer,
-    util,
-    LoggingHandler,
-    InputExample,
-)
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-import logging
-import sys
-import torch
-import gzip
-import os
 import csv
+import gzip
+import logging
+import os
+import sys
+
+import torch
+
+from sentence_transformers import (InputExample, LoggingHandler,
+                                   SentenceTransformer, util)
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 
 script_folder_path = os.path.dirname(os.path.realpath(__file__))
 

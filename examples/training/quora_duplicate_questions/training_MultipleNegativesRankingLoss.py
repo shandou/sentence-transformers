@@ -11,16 +11,18 @@ MultipleNegativesRankingLoss takes a random subset of these, for example (a_1, b
 The model we get works well for duplicate questions mining and for duplicate questions information retrieval. For question pair classification, other losses (like OnlineConstrativeLoss) work better.
 """
 
-from torch.utils.data import DataLoader
-from sentence_transformers import losses, util
-from sentence_transformers import LoggingHandler, SentenceTransformer, evaluation
-from sentence_transformers.readers import InputExample
-import logging
-from datetime import datetime
 import csv
+import logging
 import os
-from zipfile import ZipFile
 import random
+from datetime import datetime
+from zipfile import ZipFile
+
+from torch.utils.data import DataLoader
+
+from sentence_transformers import (LoggingHandler, SentenceTransformer,
+                                   evaluation, losses, util)
+from sentence_transformers.readers import InputExample
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

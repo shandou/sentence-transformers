@@ -16,30 +16,24 @@ With a distilbert-base-uncased model, it should achieve a performance of about 3
 Running this script:
 python train_bi-encoder-v3.py
 """
-import sys
-import json
-from torch.utils.data import DataLoader
-from sentence_transformers import (
-    SentenceTransformer,
-    LoggingHandler,
-    util,
-    models,
-    evaluation,
-    losses,
-    InputExample,
-)
-import logging
-from datetime import datetime
+import argparse
 import gzip
+import json
+import logging
 import os
+import pickle
+import random
+import sys
 import tarfile
 from collections import defaultdict
-from torch.utils.data import IterableDataset
+from datetime import datetime
+
 import tqdm
-from torch.utils.data import Dataset
-import random
-import pickle
-import argparse
+from torch.utils.data import DataLoader, Dataset, IterableDataset
+
+from sentence_transformers import (InputExample, LoggingHandler,
+                                   SentenceTransformer, evaluation, losses,
+                                   models, util)
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(

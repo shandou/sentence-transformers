@@ -13,12 +13,13 @@ Further information can be found in our paper:
 Making Monolingual Sentence Embeddings Multilingual using Knowledge Distillation
 https://arxiv.org/abs/2004.09813
 """
-import os
-import sentence_transformers.util
-import gzip
 import csv
+import gzip
+import os
+
 from tqdm.autonotebook import tqdm
 
+import sentence_transformers.util
 
 source_languages = set(["en"])  # Languages our (monolingual) teacher model understands
 target_languages = set(

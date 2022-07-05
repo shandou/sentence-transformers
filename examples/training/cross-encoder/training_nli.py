@@ -7,17 +7,20 @@ It does NOT produce a sentence embedding and does NOT work for individual senten
 Usage:
 python training_nli.py
 """
-from torch.utils.data import DataLoader
+import csv
+import gzip
+import logging
 import math
+import os
+from datetime import datetime
+
+from torch.utils.data import DataLoader
+
 from sentence_transformers import LoggingHandler, util
 from sentence_transformers.cross_encoder import CrossEncoder
-from sentence_transformers.cross_encoder.evaluation import CESoftmaxAccuracyEvaluator
+from sentence_transformers.cross_encoder.evaluation import \
+    CESoftmaxAccuracyEvaluator
 from sentence_transformers.readers import InputExample
-import logging
-from datetime import datetime
-import os
-import gzip
-import csv
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(
