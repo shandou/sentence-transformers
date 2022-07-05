@@ -1,5 +1,9 @@
 """
-This examples trains BERT (or any other transformer model like RoBERTa, DistilBERT etc.) for the STSbenchmark from scratch. It generates sentence embeddings
+STS = Semantic Textural Similarity
+
+This examples trains BERT
+(or any other transformer model like RoBERTa, DistilBERT etc.)
+for the STSbenchmark from scratch. It generates sentence embeddings
 that can be compared using cosine-similarity to measure the similarity.
 
 Usage:
@@ -38,6 +42,7 @@ logging.basicConfig(
 
 
 # Check if dataset exsist. If not, download and extract  it
+# TODO: Add preview example of data content
 sts_dataset_path = "datasets/stsbenchmark.tsv.gz"
 
 if not os.path.exists(sts_dataset_path):
@@ -63,6 +68,10 @@ model_save_path = (
 word_embedding_model = models.Transformer(model_name)
 
 # Apply mean pooling to get one fixed sized sentence vector
+# Using pooling, it generates from a variable sized sentence
+#   a fixed sized sentence embedding.
+# This layer also allows to use the CLS token
+#   if it is returned by the underlying word embedding model.
 pooling_model = models.Pooling(
     word_embedding_model.get_word_embedding_dimension(),
     pooling_mode_mean_tokens=True,
