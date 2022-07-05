@@ -16,12 +16,16 @@ import os
 import sys
 from datetime import datetime
 
-from torch.utils.data import DataLoader
-
-from sentence_transformers import (LoggingHandler, SentenceTransformer, losses,
-                                   models, util)
+from sentence_transformers import (
+    LoggingHandler,
+    SentenceTransformer,
+    losses,
+    models,
+    util,
+)
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 from sentence_transformers.readers import InputExample
+from torch.utils.data import DataLoader
 
 #### Just some code to print debug information to stdout
 logging.basicConfig(
@@ -37,7 +41,9 @@ logging.basicConfig(
 sts_dataset_path = "datasets/stsbenchmark.tsv.gz"
 
 if not os.path.exists(sts_dataset_path):
-    util.http_get("https://sbert.net/datasets/stsbenchmark.tsv.gz", sts_dataset_path)
+    util.http_get(
+        "https://sbert.net/datasets/stsbenchmark.tsv.gz", sts_dataset_path
+    )
 
 
 # You can specify any huggingface/transformers pre-trained model here, for example, bert-base-uncased, roberta-base, xlm-roberta-base
@@ -88,7 +94,9 @@ with gzip.open(sts_dataset_path, "rt", encoding="utf8") as fIn:
             train_samples.append(inp_example)
 
 
-train_dataloader = DataLoader(train_samples, shuffle=True, batch_size=train_batch_size)
+train_dataloader = DataLoader(
+    train_samples, shuffle=True, batch_size=train_batch_size
+)
 train_loss = losses.CosineSimilarityLoss(model=model)
 
 
